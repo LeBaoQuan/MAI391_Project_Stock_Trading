@@ -6,8 +6,6 @@ file_path = 'https://raw.githubusercontent.com/LeBaoQuan/MAI391_Project_Stock_Tr
 df = pd.read_csv(file_path)
 df
 ## in column forefir, replace 0 with -1 for better visualization
-df['foredir'].replace(0,-1,inplace=True)
-
 ## check if there's any null values
 df.isnull().sum()
 
