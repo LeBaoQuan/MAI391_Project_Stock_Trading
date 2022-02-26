@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 file_path = 'https://raw.githubusercontent.com/LeBaoQuan/MAI391_Project_Stock_Trading/master/hvn30full.csv'
 df = pd.read_csv(file_path)
 df
+## in column forefir, replace 0 with -1 for better visualization
+df['foredir'].replace(0,-1,inplace=True)
 
 ## check if there's any null values
 df.isnull().sum()
@@ -12,8 +14,9 @@ df.isnull().sum()
 ## extract all stock names into a dict
 ## split each stock in a df
 df_stockName = {g: d for g, d in df.groupby('ticker')}
+    #list all stock name
 df_stockName.keys()
-df_stockName
+
 
 ## The value of each key in df_dict, will be a DataFrame,
 ## which can be accessed in the standard way, df_stockName['key'].
@@ -22,62 +25,71 @@ df_stockName
 df_stockName2 = {f'df{i}': d for i, (g, d) in enumerate(df.groupby('ticker'))}
 df_stockName2.keys()
 
+
+#example
+df_stockName2['df0']
+
 ## plot graphs
-df_stockName2['df0']
-# x-axis represent the time
-# y-axis represent other variables (foredir, close, HL, LO, var)
-
-#df0: BID
-df_stockName2['df0']
-
-x_BID = df_stockName['BID']['insec']
-
-y_BID = [0 for i in range (0,5)]
-for i in range (0,5):
-    y_BID[i] = df_stockName['BID'].iloc[:,i+1]
-    plt.plot(x_BID,y_BID[i])
-
-
-#df1: BVH
-df_stockName2['df1']
-x_BVH = df_stockName['BVH']['insec']
-y_BVH = [0 for i in range (0,5)]
-for i in range (0,5):
-    y_BVH[i] = df_stockName['BVH'].iloc[:,i+1]
-    plt.plot(x_BVH, y_BVH[i])
-
-plt.plot(x_BID, y_BID[1])
-plt.plot(x_BVH, y_BVH[1])
-
-
 ## create a list of df corresponding to each stock
 df = [0 for i in range (0,30)]
-
 for i in range (0,30):
     df[i] = df_stockName2[f'df{1}']
-
 for i in range (0,30):
     df[i]
 
-## create a list x[30] represent a list of column insec value of each df
-x = [0 for i in range (0,30)]
-
+## create a list time[30] represent a list of column insec value of each df
+time = [0 for i in range (0,30)]
 for i in range (0,30):
-    x[i] = df[i].iloc[:,8]
-x[i]
+    time[i] = df[i].iloc[:,8]
 
-|## create a list y[13][30] represent a list of each 13 column of each df
-y = [[0]*13 for i in range (0,30)]
+## foredir
+foredir = [0 for i in range (0,30)]
 for i in range (0,30):
-    for j in range (0,13):
-        y[i][j] = df[i].iloc[:,j]
+    foredir[i] = df[i].iloc[:,1]
 
-## plot out graphs, each present a change in time of each values (foredir, close, HL, LO, var, etc)
+## create a list y_close[30] represent a list of column close value of each df
+close = [0 for i in range (0,30)]
+for i in range (0,30):
+    close[i] = df[i].iloc[:,2]
 
+## HL
+hl = [0 for i in range (0,30)]
+for i in range (0,30):
+    hl[i] = df[i].iloc[:,3]
 
-for i in in range (0,30):
-        plt.plot(x[i],y[i][2])
+## lO
+lo = [0 for i in range (0,30)]
+for i in range (0,30):
+    lo[i] = df[i].iloc[:,4]
 
+## var
+var = [0 for i in range (0,30)]
+for i in range (0,30):
+    var[i] = df[i].iloc[:,5]
 
-plt.plot(x[0], y[0][2], color= 'red')
-plt.plot(x[0], y[0][3], color= 'green')
+## ma7
+ma7 = [0 for i in range (0,30)]
+for i in range (0,30):
+    ma7[i] = df[i].iloc[:,9]
+
+## ma14
+ma14 = [0 for i in range (0,30)]
+for i in range (0,30):
+    ma14[i] = df[i].iloc[:,10]
+
+## ma21
+ma21 = [0 for i in range (0,30)]
+for i in range (0,30):
+    ma21[i] = df[i].iloc[:,11]
+
+## sd7
+sd = [0 for i in range (0,30)]
+for i in range (0,30):
+    sd[i] = df[i].iloc[:,12]
+
+df[0].head()
+plt.plot(time[0], close[0])
+plt.plot(time[0], hl[0])
+plt.plot(time[0], var[0])
+
+plt.plot(close[0], foredir[0])
