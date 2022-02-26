@@ -66,7 +66,7 @@ for i in range (0,30):
     x[i] = df[i].iloc[:,8]
 x[i]
 
-|## create a list y[13][30] represent a list of each 13 column of each df
+## create a list y[13][30] represent a list of each 13 column of each df
 y = [[0]*13 for i in range (0,30)]
 for i in range (0,30):
     for j in range (0,13):
@@ -75,7 +75,7 @@ for i in range (0,30):
 ## plot out graphs, each present a change in time of each values (foredir, close, HL, LO, var, etc)
 
 
-for i in in range (0,30):
+for i in range (0,30):
         plt.plot(x[i],y[i][2])
 
 
