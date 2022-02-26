@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-file_path = 'G:\My Drive\Python Projects\MAI391 Project\data_set\hvn30full.csv'
+file_path = 'D:\ml_project\mai391\stock_trading\data_set\hvn30full.csv'
 df = pd.read_csv(file_path)
 df
 
