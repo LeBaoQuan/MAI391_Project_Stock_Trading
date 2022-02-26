@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-file_path = 'D:\ml_project\mai391\stock_trading\data_set\hvn30full.csv'
+file_path = 'https://github.com/LeBaoQuan/MAI391_Project_Stock_Trading/blob/master/hvn30full.csv'
 df = pd.read_csv(file_path)
 df
 
@@ -73,12 +73,7 @@ for i in range (0,30):
         y[i][j] = df[i].iloc[:,j]
 
 ## plot out graphs, each present a change in time of each values (foredir, close, HL, LO, var, etc)
-for i in in range (0,30):
-    r = random.random()
-    b = random.random()
-    g = random.random()
-    color = (r, g, b)
-    plt.plot(x[i], y[i][2], c = color)
+
 
 for i in in range (0,30):
         plt.plot(x[i],y[i][2])
