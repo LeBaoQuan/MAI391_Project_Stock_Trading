@@ -32,4 +32,10 @@
 
 4. Research method:
 
+### Tesing the Weak-form Efficient Market###
+
+* examine the randomness (in the changes of VN-index and VN30 index)s, weather they're independent
+
+* examine other factors which affects the stock price using Logistic Regression --> weather investors with little academic knowledge could still make correct investing decisions
+
 5. Results:
