@@ -24,21 +24,25 @@
 
  ### this study aims to test the weak-form efficiency of the Ho Chi Minh stock market###
 
-3. Literature review / Summary of pre-requisite knowledge:
+3. Summary of pre-requisite knowledge:
 
 > Logistic Regression:
 
+- Sigmoid function
 - Maximum likelihood estimation (MLE)
+- Build and Optimizing Loss Function
 
 > Support Vector Machine (SVM):
 
+- Classification
+
 4. Research method:
 
-### Tesing the Weak-form Efficient Market###
+### Testing the Weak-form Efficient Market###
 
 * examine the randomness (in the changes of VN-index and VN30 index), weather they're independent (stock price is effected by its own past price, not by other stocks or the overall market)
 
-* using Logistic Regression to examine how factors (close, HL, LO, var, etc) effect a stock price (increase or decrease)
+* using Logistic Regression to examine how factors (close, HL, LO, var, etc. ) effect a stock price (increase or decrease)
 
 ### Predict stock price movement
 
@@ -49,10 +53,11 @@
 
 ### building model
 
+>> in process, vì đọc vẫn chưa hiểu 
 
 5. Results:
 
 6. Conclusion:
 
 - Stock market is __Inefficient__ --> correct technical analysis may result in competitive advantages
-- This study did omit many factors (transaction cost, tax, liquidity risk, etc) and the reliability to apply in model in reality is limited
+- This study did omit many factors (transaction cost, tax, liquidity risk, etc. ) and the reliability to apply in model in reality is limited
