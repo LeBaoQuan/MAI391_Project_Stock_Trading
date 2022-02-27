@@ -7,50 +7,42 @@ df = pd.read_csv(file_path)
 df
 #create list of column name
 w=df.columns.tolist()
+w
 
-## in column forefir, replace 0 with -1 for better visualization
-## check if there's any null values
-
-## extract all stock names into a dict
-## split each stock in a df
+## split each stock into a df
 df_stockName = {g: d for g, d in df.groupby('ticker')}
-   
+#example
+df_stockName['BID']
 
-
-
-## The value of each key in df_dict, will be a DataFrame,
-## which can be accessed in the standard way, df_stockName['key'].
+## The value of each key in df_stockName, will be a DataFrame,
+## which can be accessed as in df_stockName['key'].
 
 # cach 2,
 df_stockName2 = {f'df{i}': d for i, (g, d) in enumerate(df.groupby('ticker'))}
-
-
-
-#example
+#example of BID stock
 df_stockName2['df0']
 
 
-## plot graphs
 ## create a list of df corresponding to each stock
 df = [0 for i in range (0,30)]
 for i in range (0,30):
     df[i] = df_stockName2[f'df{1}']
 
-
 #change 'insec' in column name list to 'time'
 w[w.index('insec')]='time'
-## create lists of columns value of each df (size[30])
+df
+
+## create lists of columns value (foredir, close, HL, LO, var, etc) of each df (size[30])
 x = 0
-for v in w:  
+for v in w:
   if v!='ticker':
     exec(v+'= [0 for i in range (0,30)]')
     #iterate x after every step
     x+=1
     for i in range(0,30):
       exec(v+'[i] = df[i].iloc[:,x]')
-    
 
-df[0].head()
+## plot some graphs
 for i in range(0,30):
   plt.plot(time[i], close[i])
 plt.show()
