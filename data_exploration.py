@@ -1,3 +1,5 @@
+
+  
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -28,9 +30,8 @@ df_stockName2['df0']
 
 
 ## create a list of df corresponding to each stock
-df = [0 for i in range (0,30)]
-for i in range (0,30):
-    df[i] = df_stockName2[f'df{1}']
+df= df_stockName2[f'df{1}']
+df=np.array_split(df,30)
 
 
 #change 'insec' in column name list to 'time'
@@ -48,8 +49,8 @@ for v in w:
       exec(v+'[i] = df[i].iloc[:,x]')
 
 ## plot some graphs
-for i in range(0,30):
-  plt.plot(time[i], close[i])
+
+  plt.plot(time[0], close[0])
 plt.show()
 
 c = []
