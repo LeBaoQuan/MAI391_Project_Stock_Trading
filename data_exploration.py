@@ -28,6 +28,7 @@ df = [0 for i in range (0,30)]
 for i in range (0,30):
     df[i] = df_stockName2[f'df{1}']
 
+
 #change 'insec' in column name list to 'time'
 w[w.index('insec')]='time'
 df
