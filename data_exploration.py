@@ -30,8 +30,9 @@ df_stockName2['df0']
 
 
 ## create a list of df corresponding to each stock
-df= df_stockName2[f'df{1}']
-df=np.array_split(df,30)
+df = [0 for i in range (0,30)]
+for i in range (0,30):
+    df[i] = df_stockName2[f'df{i}']
 
 
 #change 'insec' in column name list to 'time'
