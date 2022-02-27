@@ -47,5 +47,12 @@
 
 ![rolling window](https://github.com/LeBaoQuan/MAI391_Project_Stock_Trading/blob/master/rolling_window.png)
 
+### building model
+
 
 5. Results:
+
+6. Conclusion:
+
+- Stock market is __Inefficient__ --> correct technical analysis may result in competitive advantages
+- This study did omit many factors (transaction cost, tax, liquidity risk, etc) and the reliability to apply in model in reality is limited
