@@ -57,8 +57,8 @@ plt.show()
 c = []
 for i in foredir[0]:
     if i > 0.5:
-        c.append('red')
+        c.append('green')
     else:
-        c.append('blue')
+        c.append('red')
 
 plt.bar(time[0], foredir[0], color = c)
