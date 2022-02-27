@@ -28,14 +28,24 @@
 
 > Logistic Regression:
 
+- Maximum likelihood estimation (MLE)
+
 > Support Vector Machine (SVM):
 
 4. Research method:
 
 ### Tesing the Weak-form Efficient Market###
 
-* examine the randomness (in the changes of VN-index and VN30 index)s, weather they're independent
+* examine the randomness (in the changes of VN-index and VN30 index), weather they're independent (stock price is effected by its own past price, not by other stocks or the overall market)
 
-* examine other factors which affects the stock price using Logistic Regression --> weather investors with little academic knowledge could still make correct investing decisions
+* using Logistic Regression to examine how factors (close, HL, LO, var, etc) effect a stock price (increase or decrease)
+
+### Predict stock price movement
+
+* use a _rolling window_ of 1year (365 days) as observation period
+* identifying the optimal parameters for the first 365 days --> predict the price of day 366th --> continue with the next _rolling window_ (day 2th to day 366th, to predit day 367th), so on and so forth
+
+![rolling window](https://github.com/LeBaoQuan/MAI391_Project_Stock_Trading/blob/master/rolling_window.png)
+
 
 5. Results:
