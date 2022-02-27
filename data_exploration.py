@@ -9,6 +9,10 @@ df
 w=df.columns.tolist()
 w
 
+# in column foredir, replace 0 with -1 for better visualization
+df['foredir'].replace(0, -1, inplace = True)
+df['foredir']
+
 ## split each stock into a df
 df_stockName = {g: d for g, d in df.groupby('ticker')}
 #example
@@ -47,3 +51,12 @@ for v in w:
 for i in range(0,30):
   plt.plot(time[i], close[i])
 plt.show()
+
+c = []
+for i in foredir[0]:
+    if i > 0.5:
+        c.append('red')
+    else:
+        c.append('blue')
+
+plt.bar(time[0], foredir[0], color = c)
