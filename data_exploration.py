@@ -52,6 +52,7 @@ for v in w:
 ## plot some example graphs
 
 plt.plot(time[0], close[0])
+plt.title("Close value of "+df_stockName2[f'df{0}'].iloc[0].iloc[0])
 plt.show()
 
 ## using bar chart to plot foredir
@@ -61,18 +62,34 @@ for i in foredir[0]:
         c.append('green')
     else:
         c.append('red')
-
 plt.bar(time[0], foredir[0], color = c)
-plt.plot(time[0], vnipc[0])
-plt.plot(time[0], vnic[0])
+plt.title("Foredir value of "+df_stockName2[f'df{0}'].iloc[0].iloc[0])
+plt.show()
+
+#biểu đồ đường kết hợp:
+  #tạo 2 cột Y
+fig = plt.figure(figsize=(20,4)) 
+ax1 = fig.add_subplot(111) 
+ax2 = ax1.twinx()
+  #cột 1
+ax1.bar(time[0], vnic[0], 0.5, color='blue', label='vnic')
+ax1.set_ylabel('VNIC', color='blue')
+  #cột 2
+ax2.bar(time[0]+0.5, vnipc[0], 0.5, color='orange', label='vnipc')
+ax2.set_ylabel('VNIPC', color='orange')
+  #set lim 2 cái tỉ lệ nhau để điểm 0 trùng nhau
+ax1.set_ylim(-75,55)
+ax2.set_ylim(-7.5,5.5)
+plt.legend(loc='upper left')
+plt.title("VNIPC and VNIC value of "+df_stockName2[f'df{0}'].iloc[0].iloc[0])
+plt.show()
+
 ## plot all graphs, trying to find patterns
-w
-df[0]
-
-
+fig = plt.figure(figsize=(20,5)) 
+ax = fig.add_subplot(111)
 for i in range (0, 30):
     color = (np.random.rand(), np.random.rand(), np.random.rand())
-    plt.plot(time[i], close[i], c=color, label = f'df{i}')
-    plt.legend(loc = 'upper left')
-
-df[0]
+    ax.plot(time[i], close[i], c=color, label = df_stockName2[f'df{i}'].iloc[0].iloc[0])
+    plt.legend(loc = 'upper right', ncol=6, prop={'size': 15})
+plt.title("Close value of all stocks")
+ax.set_ylabel('CLOSE')
