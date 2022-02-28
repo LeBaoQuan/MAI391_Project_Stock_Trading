@@ -1,5 +1,5 @@
 
-  
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -23,7 +23,7 @@ df_stockName['BID']
 ## The value of each key in df_stockName, will be a DataFrame,
 ## which can be accessed as in df_stockName['key'].
 
-# cach 2,
+# cach 2, for ease of use when iterating through many df
 df_stockName2 = {f'df{i}': d for i, (g, d) in enumerate(df.groupby('ticker'))}
 #example of BID stock
 df_stockName2['df0']
@@ -49,17 +49,30 @@ for v in w:
     for i in range(0,30):
       exec(v+'[i] = df[i].iloc[:,x]')
 
-## plot some graphs
+## plot some example graphs
 
-  plt.plot(time[0], close[0])
+plt.plot(time[0], close[0])
 plt.show()
 
-## using bar chart to plot foredir 
+## using bar chart to plot foredir
 c = []
 for i in foredir[0]:
-    if i > 0.5:
+    if i > 0:
         c.append('green')
     else:
         c.append('red')
 
 plt.bar(time[0], foredir[0], color = c)
+plt.plot(time[0], vnipc[0])
+plt.plot(time[0], vnic[0])
+## plot all graphs, trying to find patterns
+w
+df[0]
+
+
+for i in range (0, 30):
+    color = (np.random.rand(), np.random.rand(), np.random.rand())
+    plt.plot(time[i], close[i], c=color, label = f'df{i}')
+    plt.legend(loc = 'upper left')
+
+df[0]
