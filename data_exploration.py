@@ -1,3 +1,5 @@
+
+  
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -30,7 +32,7 @@ df_stockName2['df0']
 ## create a list of df corresponding to each stock
 df = [0 for i in range (0,30)]
 for i in range (0,30):
-    df[i] = df_stockName2[f'df{1}']
+    df[i] = df_stockName2[f'df{i}']
 
 
 #change 'insec' in column name list to 'time'
@@ -48,16 +50,16 @@ for v in w:
       exec(v+'[i] = df[i].iloc[:,x]')
 
 ## plot some graphs
-for i in range(0,30):
-  plt.plot(time[i], close[i])
+
+  plt.plot(time[0], close[0])
 plt.show()
 
 ## using bar chart to plot foredir 
 c = []
 for i in foredir[0]:
     if i > 0.5:
-        c.append('red')
+        c.append('green')
     else:
-        c.append('blue')
+        c.append('red')
 
 plt.bar(time[0], foredir[0], color = c)
