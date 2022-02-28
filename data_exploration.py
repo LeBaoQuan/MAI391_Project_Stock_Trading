@@ -52,6 +52,7 @@ for i in range(0,30):
   plt.plot(time[i], close[i])
 plt.show()
 
+## using bar chart to plot foredir 
 c = []
 for i in foredir[0]:
     if i > 0.5:
