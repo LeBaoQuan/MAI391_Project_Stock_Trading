@@ -1,4 +1,6 @@
-
+import os
+cwd = os.getcwd()
+os.chdir('D:\ml_project\mai391\stock_trading')
 
 import numpy as np
 import pandas as pd
@@ -10,6 +12,8 @@ df
 #create list of column name
 w=df.columns.tolist()
 w
+
+df_vnindex = pd.read_csv('vnindex30.csv')
 
 # in column foredir, replace 0 with -1 for better visualization
 df['foredir'].replace(0, -1, inplace = True)
@@ -35,6 +39,7 @@ for i in range (0,30):
     df[i] = df_stockName2[f'df{i}']
 
 
+df[0]
 #change 'insec' in column name list to 'time'
 w[w.index('insec')]='time'
 df
@@ -68,8 +73,8 @@ plt.show()
 
 #biểu đồ đường kết hợp:
   #tạo 2 cột Y
-fig = plt.figure(figsize=(20,4)) 
-ax1 = fig.add_subplot(111) 
+fig = plt.figure(figsize=(20,4))
+ax1 = fig.add_subplot(111)
 ax2 = ax1.twinx()
   #cột 1
 ax1.bar(time[0], vnic[0], 0.5, color='blue', label='vnic')
@@ -85,7 +90,7 @@ plt.title("VNIPC and VNIC value of "+df_stockName2[f'df{0}'].iloc[0].iloc[0])
 plt.show()
 
 ## plot all graphs, trying to find patterns
-fig = plt.figure(figsize=(20,5)) 
+fig = plt.figure(figsize=(20,5))
 ax = fig.add_subplot(111)
 for i in range (0, 30):
     color = (np.random.rand(), np.random.rand(), np.random.rand())
@@ -93,3 +98,28 @@ for i in range (0, 30):
     plt.legend(loc = 'upper right', ncol=6, prop={'size': 15})
 plt.title("Close value of all stocks")
 ax.set_ylabel('CLOSE')
+
+plt.plot(time[0],close[0])
+plt.plot(time[0],vnic[0])
+plt.plot(time[0],vnipc[0])
+
+df1 = pd.read_csv('vnindex30.csv')
+
+df1['vn30index']= (df1['vn30index']-df1['vn30index'].min())/(df1['vn30index'].max()-df1['vn30index'].min())
+df1['vnindex']= (df1['vnindex']-df1['vnindex'].min())/(df1['vnindex'].max()-df1['vnindex'].min())
+df1['BID'] = df[0]['close']
+df1['BID']= (df1['BID'] - df1['BID'].min())  /  (df1['BID'].max()-df1['BID'].min())
+df1
+df1.dropna()
+df1.dropna(inplace =True)
+plt.plot(df1['vn30index'])
+
+
+df1 = df1.iloc[::-1].reset_index(drop=True)
+df1
+plt.plot(df1['vn30index'], label='vn30index')
+plt.plot(df1['vnindex'],label='vnindex')
+plt.plot(df1['BID'], label='BID')
+plt.legend()
+
+#PLOT histogram cua foredir
