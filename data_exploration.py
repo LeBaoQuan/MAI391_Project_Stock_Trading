@@ -164,3 +164,12 @@ plt.plot((df1['vnindex']-df1['vnindex'].min())/(df1['vnindex'].max()-df1['vninde
 plt.legend()
 plt.title('so sánh BID BVH vnindex vn30index')
 plt.show()
+
+#foredir of stocks
+plt.figure(figsize=(20,4))
+df2 = pd.read_csv('https://raw.githubusercontent.com/LeBaoQuan/MAI391_Project_Stock_Trading/master/foredir_histogram.csv')
+plt.bar(df2['ticker'],df2['up'],label='up')
+plt.bar(df2['ticker'],df2['down'],bottom=df2['up'], label='down')
+plt.title('foredir of stocks',size=20)
+plt.legend()
+plt.show()
