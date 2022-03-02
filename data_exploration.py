@@ -102,24 +102,59 @@ ax.set_ylabel('CLOSE')
 plt.plot(time[0],close[0])
 plt.plot(time[0],vnic[0])
 plt.plot(time[0],vnipc[0])
+plt.show()
 
-df1 = pd.read_csv('vnindex30.csv')
+
+#vẽ vnindex, vn30index
+df1 = pd.read_csv('https://raw.githubusercontent.com/LeBaoQuan/MAI391_Project_Stock_Trading/master/vnindex30.csv')
+df1 = df1.iloc[::-1].reset_index(drop=True)
+plt.figure(figsize=(20,4))
+#tạo để sau
+vn=df1['vnindex'].tolist()
+vn30=df1['vn30index'].tolist()
 
 df1['vn30index']= (df1['vn30index']-df1['vn30index'].min())/(df1['vn30index'].max()-df1['vn30index'].min())
 df1['vnindex']= (df1['vnindex']-df1['vnindex'].min())/(df1['vnindex'].max()-df1['vnindex'].min())
-df1['BID'] = df[0]['close']
-df1['BID']= (df1['BID'] - df1['BID'].min())  /  (df1['BID'].max()-df1['BID'].min())
-df1
 df1.dropna()
 df1.dropna(inplace =True)
-plt.plot(df1['vn30index'])
-
-
-df1 = df1.iloc[::-1].reset_index(drop=True)
-df1
-plt.plot(df1['vn30index'], label='vn30index')
-plt.plot(df1['vnindex'],label='vnindex')
-plt.plot(df1['BID'], label='BID')
+day = [dt.datetime.strptime(d,'%d/%m/%Y').date() for d in df1['days']]
+plt.plot(day, df1['vn30index'], label='vn30index')
+plt.plot(day, df1['vnindex'], label='vnindex')
 plt.legend()
+plt.show()
 
-#PLOT histogram cua foredir
+#trung bình tăng giảm so với đứa trước theo %
+for i in range(3015,0,-1):
+  vn[i]=(vn[i]/vn[i-1])*100-100
+  vn30[i]=(vn30[i]/vn30[i-1])*100-100
+vn[0]=0
+vn30[0]=0
+vn=pd.Series(vn)
+vn30=pd.Series(vn30)
+
+c=[]
+for i in vn30:
+  if i>0:
+    c.append('tab:blue')
+  else:
+    c.append('red')
+plt.figure(figsize=(20,2))
+plt.bar(day,vn30,1,label='vn30index', color=c)
+plt.title("Daily fluctuation of vn30index (%)")
+plt.show()
+c=[]
+for i in vn:
+  if i>0:
+    c.append('green')
+  else:
+    c.append('tab:orange')
+plt.figure(figsize=(20,2))
+plt.bar(day,vn,1,label='vnindex',color=c)
+plt.title("Daily fluctuation of vnindex (%)")
+plt.show()
+
+plt.plot(time[3],(ma7[3]-ma7[3].min())/(ma7[3].max()-ma7[3].min()),color='red', label='FPT')
+plt.plot(time[0],(ma7[0]-ma7[0].min())/(ma7[0].max()-ma7[0].min()),color='black', label='BID')
+plt.title("FPT vs BID ma7 price in normalised form")
+plt.legend()
+plt.show()
