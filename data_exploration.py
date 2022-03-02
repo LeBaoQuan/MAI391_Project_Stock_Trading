@@ -129,9 +129,11 @@ for i in range(3015,0,-1):
   vn30[i]=(vn30[i]/vn30[i-1])*100-100
 vn[0]=0
 vn30[0]=0
+#chuyển thành anda series
 vn=pd.Series(vn)
 vn30=pd.Series(vn30)
 
+#vẽ graph
 c=[]
 for i in vn30:
   if i>0:
@@ -153,8 +155,12 @@ plt.bar(day,vn,1,label='vnindex',color=c)
 plt.title("Daily fluctuation of vnindex (%)")
 plt.show()
 
-plt.plot(time[3],(ma7[3]-ma7[3].min())/(ma7[3].max()-ma7[3].min()),color='red', label='FPT')
-plt.plot(time[0],(ma7[0]-ma7[0].min())/(ma7[0].max()-ma7[0].min()),color='black', label='BID')
-plt.title("FPT vs BID ma7 price in normalised form")
+#so sánh BID BVH vnindex vn30index ở dạng normalised
+plt.figure(figsize=(20,4))
+plt.plot((ma7[1]-ma7[1].min())/(ma7[1].max()-ma7[1].min()),label='BVH')
+plt.plot((ma7[0]-ma7[0].min())/(ma7[0].max()-ma7[0].min()),label='BID')
+plt.plot((df1['vn30index']-df1['vn30index'].min())/(df1['vn30index'].max()-df1['vn30index'].min()),label='vn30index')
+plt.plot((df1['vnindex']-df1['vnindex'].min())/(df1['vnindex'].max()-df1['vnindex'].min()),label='vnindex')
 plt.legend()
+plt.title('so sánh BID BVH vnindex vn30index')
 plt.show()
