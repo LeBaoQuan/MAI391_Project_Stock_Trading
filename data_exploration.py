@@ -155,14 +155,18 @@ plt.bar(day,vn,1,label='vnindex',color=c)
 plt.title("Daily fluctuation of vnindex (%)")
 plt.show()
 
-#so sánh BID BVH vnindex vn30index ở dạng normalised
+#so sánh BID FPT vnindex vn30index ở dạng normalised
 plt.figure(figsize=(20,4))
 plt.plot((df1['vn30index']-df1['vn30index'].min())/(df1['vn30index'].max()-df1['vn30index'].min()),label='vn30index')
 plt.plot((df1['vnindex']-df1['vnindex'].min())/(df1['vnindex'].max()-df1['vnindex'].min()),label='vnindex')
-plt.plot((ma7[3]-ma7[3].min())/(ma7[3].max()-ma7[3].min()),label='FPT')
-plt.plot((ma7[0]-ma7[0].min())/(ma7[0].max()-ma7[0].min()),label='BID')
 plt.legend()
-plt.title('so sánh BID, FPT, vnindex, vn30index')
+plt.title('so sánh BID FPT vnindex vn30index')
+plt.show()
+plt.figure(figsize=(20,4))
+plt.plot(time[3], (ma7[3]-ma7[3].min())/(ma7[3].max()-ma7[3].min()),label='FPT')
+plt.plot(time[0], (ma7[0]-ma7[0].min())/(ma7[0].max()-ma7[0].min()),label='BID')
+plt.legend()
+plt.title('so sánh BID FPT vnindex vn30index')
 plt.show()
 
 #foredir of stocks
